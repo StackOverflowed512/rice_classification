@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rice Grain Analyzer</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            .upload-form {
+                text-align: center;
+                margin-top: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="upload-form">
+            <h1>Rice Grain Analyzer</h1>
+            <form
+                action="{{ url_for('analyze') }}"
+                method="post"
+                enctype="multipart/form-data"
+            >
+                <input
+                    type="file"
+                    name="image"
+                    accept=".jpg,.jpeg,.png"
+                    required
+                />
+                <br /><br />
+                <input type="submit" value="Analyze Image" />
+            </form>
+        </div>
+    </body>
+</html>
