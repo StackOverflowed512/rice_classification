@@ -22,14 +22,17 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
-MODEL_PATH = 'rice_classifier.h5'
+RICE_TYPE_MODEL = 'rice_classifier.h5'
+CONDITION_MODEL = 'condition_classifier.h5'
 
 try:
-    model = load_model(MODEL_PATH)
-    logger.info("Model loaded successfully")
+    type_model = load_model(RICE_TYPE_MODEL)
+    condition_model = load_model(CONDITION_MODEL)
+    logger.info("Models loaded successfully")
 except Exception as e:
-    logger.error(f"Error loading model: {str(e)}")
-    model = None
+    logger.error(f"Error loading models: {str(e)}")
+    type_model = None
+    condition_model = None
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -40,52 +43,72 @@ def analyze_rice_image(image_path):
         if img is None:
             raise ValueError("Failed to load image")
             
-        img_class = cv2.resize(img, (64, 64))  # Changed from 28 to 64
-        img_class = img_class / 255.0
-        img_class = np.expand_dims(img_class, axis=0)
+        # Rice type classification
+        img_type = cv2.resize(img, (64, 64))
+        img_type = img_type / 255.0
+        img_type = np.expand_dims(img_type, axis=0)
         
-        prediction = model.predict(img_class)
+        type_prediction = type_model.predict(img_type)
         rice_types = ['Arborio', 'Basmati', 'Ipsala', 'Jasmine', 'Karacadag']
-        predicted_type = rice_types[np.argmax(prediction)]
+        predicted_type = rice_types[np.argmax(type_prediction)]
+        type_confidence = float(np.max(type_prediction))
         
+        # Process image for grain detection
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         blur = cv2.GaussianBlur(gray, (5, 5), 0)
         _, thresh = cv2.threshold(blur, 127, 255, cv2.THRESH_BINARY)
-        
         contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         
-        whole_count = 0
+        # Initialize counters
         broken_count = 0
-        
-        areas = [cv2.contourArea(contour) for contour in contours if cv2.contourArea(contour) > 100]
-        avg_area = np.mean(areas) if areas else 0
-        area_threshold = avg_area * 0.7
+        damaged_count = 0
+        discolored_count = 0
+        normal_count = 0
         
         for contour in contours:
             area = cv2.contourArea(contour)
-            if area < 100:
+            if area < 100:  # Skip small contours
                 continue
                 
-            is_broken = area < area_threshold
-            
             x, y, w, h = cv2.boundingRect(contour)
-            color = (0, 0, 255) if is_broken else (0, 255, 0)
-            cv2.rectangle(img, (x, y), (x+w, y+h), color, 2)
+            grain_img = img[y:y+h, x:x+w]
             
-            if is_broken:
+            # Classify grain condition
+            grain_resized = cv2.resize(grain_img, (128, 128))
+            grain_normalized = grain_resized / 255.0
+            grain_normalized = np.expand_dims(grain_normalized, axis=0)
+            
+            condition_prediction = condition_model.predict(grain_normalized)
+            condition_idx = np.argmax(condition_prediction)
+            condition_conf = float(np.max(condition_prediction))
+            
+            # Color coding based on condition
+            if condition_idx == 0 and condition_conf > 0.5:  # Broken
+                color = (0, 0, 255)  # Red
                 broken_count += 1
+            elif condition_idx == 1 and condition_conf > 0.5:  # Damaged
+                color = (0, 165, 255)  # Orange
+                damaged_count += 1
+            elif condition_idx == 2 and condition_conf > 0.5:  # Discolored
+                color = (0, 255, 255)  # Yellow
+                discolored_count += 1
             else:
-                whole_count += 1
+                color = (0, 255, 0)  # Green for normal
+                normal_count += 1
+            
+            cv2.rectangle(img, (x, y), (x+w, y+h), color, 2)
         
         output_path = os.path.join(app.config['UPLOAD_FOLDER'], 'processed.jpg')
         cv2.imwrite(output_path, img)
         
         return {
             'rice_type': predicted_type,
-            'whole_count': whole_count,
+            'type_confidence': type_confidence,
+            'normal_count': normal_count,
             'broken_count': broken_count,
-            'processed_image': 'processed.jpg',
-            'confidence': float(np.max(prediction))
+            'damaged_count': damaged_count,
+            'discolored_count': discolored_count,
+            'processed_image': 'processed.jpg'
         }
         
     except Exception as e:
@@ -98,8 +121,8 @@ def index():
 
 @app.route('/analyze', methods=['POST'])
 def analyze():
-    if model is None:
-        flash('Model not loaded. Please check server logs.', 'error')
+    if type_model is None or condition_model is None:
+        flash('Models not loaded. Please check server logs.', 'error')
         return render_template('index.html')
         
     if 'image' not in request.files:

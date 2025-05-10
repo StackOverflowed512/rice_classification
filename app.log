@@ -68,3 +68,55 @@
 2025-05-09 17:19:53,206 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 17:19:53] "POST /analyze HTTP/1.1" 200 -
 2025-05-09 17:19:53,312 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 17:19:53] "GET /static/uploads/processed.jpg HTTP/1.1" 200 -
 2025-05-09 17:23:30,205 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 17:23:30] "GET / HTTP/1.1" 200 -
+2025-05-09 20:08:11,075 - __main__ - INFO - Models loaded successfully
+2025-05-09 20:08:11,124 - werkzeug - INFO -  * Restarting with stat
+2025-05-09 20:08:24,638 - __main__ - INFO - Models loaded successfully
+2025-05-09 20:08:24,660 - werkzeug - WARNING -  * Debugger is active!
+2025-05-09 20:08:24,688 - werkzeug - INFO -  * Debugger PIN: 763-742-965
+2025-05-09 20:08:38,599 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-09 20:08:38,977 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:08:38] "GET / HTTP/1.1" 200 -
+2025-05-09 20:09:16,159 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:09:16] "POST /analyze HTTP/1.1" 200 -
+2025-05-09 20:09:17,575 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:09:17] "GET /static/uploads/processed.jpg HTTP/1.1" 200 -
+2025-05-09 20:09:31,846 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:09:31] "GET / HTTP/1.1" 200 -
+2025-05-09 20:09:46,465 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:09:46] "POST /analyze HTTP/1.1" 200 -
+2025-05-09 20:09:46,576 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:09:46] "GET /static/uploads/processed.jpg HTTP/1.1" 200 -
+2025-05-09 20:09:53,863 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:09:53] "GET / HTTP/1.1" 200 -
+2025-05-09 20:10:03,287 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:10:03] "POST /analyze HTTP/1.1" 200 -
+2025-05-09 20:10:03,398 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:10:03] "GET /static/uploads/processed.jpg HTTP/1.1" 200 -
+2025-05-09 20:10:10,396 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:10:10] "GET / HTTP/1.1" 200 -
+2025-05-09 20:10:24,291 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:10:24] "POST /analyze HTTP/1.1" 200 -
+2025-05-09 20:10:24,435 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:10:24] "GET /static/uploads/processed.jpg HTTP/1.1" 200 -
+2025-05-09 20:10:28,393 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:10:28] "GET / HTTP/1.1" 200 -
+2025-05-09 20:10:38,694 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:10:38] "POST /analyze HTTP/1.1" 200 -
+2025-05-09 20:10:38,832 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:10:38] "GET /static/uploads/processed.jpg HTTP/1.1" 200 -
+2025-05-09 20:10:41,947 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:10:41] "GET / HTTP/1.1" 200 -
+2025-05-09 20:10:54,180 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:10:54] "POST /analyze HTTP/1.1" 200 -
+2025-05-09 20:10:54,283 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:10:54] "GET /static/uploads/processed.jpg HTTP/1.1" 200 -
+2025-05-09 20:10:59,415 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:10:59] "GET / HTTP/1.1" 200 -
+2025-05-09 20:11:14,758 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:11:14] "POST /analyze HTTP/1.1" 200 -
+2025-05-09 20:11:14,884 - werkzeug - INFO - 127.0.0.1 - - [09/May/2025 20:11:14] "GET /static/uploads/processed.jpg HTTP/1.1" 200 -
+2025-05-10 08:42:42,433 - __main__ - INFO - Models loaded successfully
+2025-05-10 08:42:42,548 - werkzeug - INFO -  * Restarting with stat
+2025-05-10 08:42:57,799 - __main__ - INFO - Models loaded successfully
+2025-05-10 08:42:57,817 - werkzeug - WARNING -  * Debugger is active!
+2025-05-10 08:42:57,841 - werkzeug - INFO -  * Debugger PIN: 763-742-965
+2025-05-10 08:43:11,855 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-10 08:44:59,547 - werkzeug - INFO - 127.0.0.1 - - [10/May/2025 08:44:59] "GET / HTTP/1.1" 200 -
+2025-05-10 08:45:02,017 - werkzeug - INFO - 127.0.0.1 - - [10/May/2025 08:45:02] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-10 08:51:26,436 - werkzeug - INFO - 127.0.0.1 - - [10/May/2025 08:51:26] "POST /analyze HTTP/1.1" 200 -
+2025-05-10 08:51:27,491 - werkzeug - INFO - 127.0.0.1 - - [10/May/2025 08:51:27] "GET /static/uploads/processed.jpg HTTP/1.1" 200 -
+2025-05-10 09:02:02,407 - __main__ - INFO - Models loaded successfully
+2025-05-10 09:02:02,443 - werkzeug - INFO -  * Restarting with stat
+2025-05-10 09:02:10,211 - __main__ - INFO - Models loaded successfully
+2025-05-10 09:02:10,228 - werkzeug - WARNING -  * Debugger is active!
+2025-05-10 09:02:10,250 - werkzeug - INFO -  * Debugger PIN: 763-742-965
+2025-05-10 09:02:14,136 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2025-05-10 09:02:15,694 - werkzeug - INFO - 127.0.0.1 - - [10/May/2025 09:02:15] "POST /analyze HTTP/1.1" 200 -
+2025-05-10 09:02:16,843 - werkzeug - INFO - 127.0.0.1 - - [10/May/2025 09:02:16] "GET /static/uploads/processed.jpg HTTP/1.1" 200 -
+2025-05-10 09:02:28,052 - werkzeug - INFO - 127.0.0.1 - - [10/May/2025 09:02:28] "POST /analyze HTTP/1.1" 200 -
+2025-05-10 09:02:28,100 - werkzeug - INFO - 127.0.0.1 - - [10/May/2025 09:02:28] "GET /static/uploads/processed.jpg HTTP/1.1" 200 -
+2025-05-10 09:02:31,358 - werkzeug - INFO - 127.0.0.1 - - [10/May/2025 09:02:31] "POST /analyze HTTP/1.1" 200 -
+2025-05-10 09:02:31,432 - werkzeug - INFO - 127.0.0.1 - - [10/May/2025 09:02:31] "GET /static/uploads/processed.jpg HTTP/1.1" 200 -
+2025-05-10 09:02:33,850 - werkzeug - INFO - 127.0.0.1 - - [10/May/2025 09:02:33] "GET / HTTP/1.1" 200 -
+2025-05-10 09:02:47,186 - werkzeug - INFO - 127.0.0.1 - - [10/May/2025 09:02:47] "POST /analyze HTTP/1.1" 200 -
+2025-05-10 09:02:47,271 - werkzeug - INFO - 127.0.0.1 - - [10/May/2025 09:02:47] "GET /static/uploads/processed.jpg HTTP/1.1" 200 -

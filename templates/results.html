@@ -38,10 +38,18 @@
             <div class="stats">
                 <h2>Rice Type: {{ results.rice_type }}</h2>
                 <p class="confidence">
-                    Confidence: {{ "%.2f"|format(results.confidence * 100) }}%
+                    Type Classification Confidence: {{
+                    "%.2f"|format(results.type_confidence * 100) }}%
                 </p>
-                <p>Whole Grains: {{ results.whole_count }}</p>
+                <h3>Grain Condition Analysis</h3>
+                <p>Normal Grains: {{ results.normal_count }}</p>
                 <p>Broken Grains: {{ results.broken_count }}</p>
+                <p>Damaged Grains: {{ results.damaged_count }}</p>
+                <p>Discolored Grains: {{ results.discolored_count }}</p>
+                <p>
+                    Total Grains: {{ results.normal_count + results.broken_count
+                    + results.damaged_count + results.discolored_count }}
+                </p>
             </div>
 
             <h3>Processed Image</h3>
